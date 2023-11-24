@@ -1,6 +1,7 @@
 # Hangman Game
 
 Welcome to the Hangman Game! This is a simple console-based Hangman game implemented in Java.
+
 ![Alt текст](https://replit.com/cdn-cgi/image/quality=80,metadata=copyright,format=auto/https://storage.googleapis.com/replit/images/1585940175021_39360a4db2b546a4455230a428a321de.png)
 
 ## Table of Contents
