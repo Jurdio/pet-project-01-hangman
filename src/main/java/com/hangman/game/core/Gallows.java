@@ -3,21 +3,15 @@ package com.hangman.game.core;
 public class Gallows {
     private int incorrectAttempts;
     private boolean isGameOver = false;
-
     public boolean isGameOver() {
         return isGameOver;
     }
-
     public Gallows() {
         this.incorrectAttempts = 0;
     }
-
     public void updateIncorrectAttempts() {
         incorrectAttempts++;
     }
-
-
-
     public void displayGallows() {
         switch (incorrectAttempts) {
             case 0:

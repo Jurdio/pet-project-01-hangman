@@ -1,46 +1,52 @@
 package com.hangman.game.core;
 
-import com.hangman.game.words.WordDictionary;
-
 import java.util.Scanner;
 
 public class HangmanGame {
-    private WordDictionary wordDictionary;
-    HangmanGame(){
-        wordDictionary = new WordDictionary();
-    }
     public static void main(String[] args) {
         new HangmanGame().startGame();
     }
     private void startGame(){
         int userChoice;
         Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Hello, it`s Hangman game. You can see rules or start play");
+
         while (true){
             displayWelcomeScreen();
-            userChoice = scanner.nextInt();
-            switch (userChoice){
-                case 1:
-                    System.out.println("Let`s start play!");
-                    starGameplay();
-                    break;
-                case 2:
-                    displayRules();
-                    break;
-                case 3:
-                    System.out.println("Exiting the game. Goodbye!");
-                    System.exit(0);
-                    break;
-                default:
-                    System.out.println("Invalid choice. Please enter a valid option.\n");
-                    break;
+
+            try {
+                // Перевірка, чи введено тільки одну цифру від 1 до 3
+                if (!scanner.hasNext("[1-3]")) {
+                    throw new IllegalArgumentException("Invalid input, please enter a number between 1 and 3!");
+                }
+
+                userChoice = scanner.nextInt();
+
+                switch (userChoice){
+                    case 1:
+                        System.out.println("Let`s start play!");
+                        starGameplay();
+                        break;
+                    case 2:
+                        displayRules();
+                        break;
+                    case 3:
+                        System.out.println("Exiting the game. Goodbye!");
+                        System.exit(0);
+                        break;
+                    default:
+                        System.out.println("Invalid choice. Please enter a valid option.\n");
+                        break;
+                }
+            } catch (Exception e){
+                System.out.println("Invalid input, try again!");
+                scanner.nextLine();  // Очистити буфер введення
             }
         }
-
-
     }
     private void displayWelcomeScreen(){
-        System.out.println("Hello, it`s Hangman game. You can see rules or start play\n" +
-                "1 - Start play\n" +
+        System.out.println("1 - Start play\n" +
                 "2 - View rules\n" +
                 "3 - Exit");
     }
