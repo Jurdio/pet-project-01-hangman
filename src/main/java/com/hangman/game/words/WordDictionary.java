@@ -8,12 +8,10 @@ import java.util.Random;
 public class WordDictionary {
     private static List<String> words;
     private final String filePath = "/dictionary.txt";
-
     public WordDictionary() {
         words = new ArrayList<>();
         parseWordsFromFile(filePath);
     }
-
     private void parseWordsFromFile(String filePath) {
         try (InputStream inputStream = getClass().getResourceAsStream(filePath);
              InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
@@ -21,14 +19,12 @@ public class WordDictionary {
 
             String line;
             while ((line = reader.readLine()) != null) {
-                // Додавання слів з файлу до словника
                 words.add(line.trim());
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
     public String getRandomWord() {
         if (words.isEmpty()) {
             throw new IllegalStateException("The dictionary is empty.");
