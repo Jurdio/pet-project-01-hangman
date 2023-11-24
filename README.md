@@ -36,4 +36,4 @@ Upon starting the game, you can choose to start playing, view the rules, or exit
 1. Clone the repository:
 
    ```bash
-   git clone git clone https://github.com/Jurdio/pet-project-01-hangman.git
+   git clone https://github.com/Jurdio/pet-project-01-hangman.git
