@@ -9,7 +9,6 @@ public class GameLogic {
     private final String word;
     private final char[] letterArray;
     private final Gallows gallows;
-    private int failCounter;
     private StringBuilder hiddenWordBuilder;
     public GameLogic(){
         WordDictionary wordDictionary = new WordDictionary();
@@ -46,7 +45,7 @@ public class GameLogic {
         System.out.println(hiddenWordBuilder.toString());
     }
     public void guessingCycle(){
-        failCounter = 0;
+        int failCounter = 0;
         Scanner guessingScanner = new Scanner(System.in);
         String userInput;
 
