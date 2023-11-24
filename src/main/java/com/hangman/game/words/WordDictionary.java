@@ -1,26 +1,24 @@
 package com.hangman.game.words;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class WordDictionary {
     private static List<String> words;
+    private final String filePath = "/dictionary.txt";
 
     public WordDictionary() {
-        words = new ArrayList<>();
-    }
-
-    public WordDictionary(String filePath) {
         words = new ArrayList<>();
         parseWordsFromFile(filePath);
     }
 
     private void parseWordsFromFile(String filePath) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+        try (InputStream inputStream = getClass().getResourceAsStream(filePath);
+             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+             BufferedReader reader = new BufferedReader(inputStreamReader)) {
+
             String line;
             while ((line = reader.readLine()) != null) {
                 // Додавання слів з файлу до словника
@@ -31,7 +29,7 @@ public class WordDictionary {
         }
     }
 
-    public static String getRandomWord() {
+    public String getRandomWord() {
         if (words.isEmpty()) {
             throw new IllegalStateException("The dictionary is empty.");
         }
