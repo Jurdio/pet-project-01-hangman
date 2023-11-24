@@ -13,29 +13,26 @@ public class HangmanGame {
         new HangmanGame().startGame();
     }
     private void startGame(){
+        int userChoice;
+        Scanner scanner = new Scanner(System.in);
         while (true){
             displayWelcomeScreen();
-            try{
-                Scanner scanner = new Scanner(System.in);
-                int userChoice = scanner.nextInt();
-
-
-                switch (userChoice){
-                    case 1:
-
-                    case 2:
-                        displayRules();
-                        break;
-                    case 3:
-                        System.out.println("Exiting the game. Goodbye!");
-                        System.exit(0);
-                        break;
-                    default:
-                        System.out.println("Invalid choice. Please enter a valid option.\n");
-                        break;
-                }
-            } catch (Exception e){
-                System.out.println("Invalid choice. Please enter a valid option.");
+            userChoice = scanner.nextInt();
+            switch (userChoice){
+                case 1:
+                    System.out.println("Let`s start play!");
+                    starGameplay();
+                    break;
+                case 2:
+                    displayRules();
+                    break;
+                case 3:
+                    System.out.println("Exiting the game. Goodbye!");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please enter a valid option.\n");
+                    break;
             }
         }
 
@@ -56,7 +53,7 @@ public class HangmanGame {
                 "5. Mistakes: Incorrect letters reveal parts of a hangman.\n" +
                 "6. Win or Lose: Win by guessing the word; lose by running out of attempts.\n");
     }
-    private void displayGameplay(String word){
-
+    private void starGameplay(){
+        new GameLogic().guessingCycle();
     }
 }
